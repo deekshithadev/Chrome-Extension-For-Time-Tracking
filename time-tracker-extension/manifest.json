@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Time Tracker",
+  "version": "1.0",
+  "description": "Track and analyze your website productivity.",
+  "permissions": ["tabs", "storage", "alarms"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_security_policy": {
+  "extension_pages": "script-src 'self'; object-src 'self'"
+},
+ "web_accessible_resources": [
+  {
+    "resources": ["productivityMap.json"],
+    "matches": ["<all_urls>"]
+  }
+]
+}

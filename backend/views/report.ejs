@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Productivity Report</title>
+  <script src="/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      text-align: center;
+    }
+
+    canvas {
+      max-width: 600px;
+      margin: 20px auto;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 14px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>📊 Productivity Report</h2>
+
+  <canvas id="chart" width="600" height="300"></canvas>
+
+  <div>
+    <a href="/download/json"><button>📥 Download JSON</button></a>
+    <a href="/download/csv"><button>📥 Download CSV</button></a>
+  </div>
+
+  <script>
+    const labels = <%- JSON.stringify(Object.keys(timeData)) %>;
+    const values = <%- JSON.stringify(Object.values(timeData).map(v => Math.round(v / 1000))) %>;
+
+    const ctx = document.getElementById("chart").getContext("2d");
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Time Spent (seconds)',
+          data: values,
+          backgroundColor: 'rgba(54, 162, 235, 0.6)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

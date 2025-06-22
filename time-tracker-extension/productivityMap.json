@@ -1,0 +1,4 @@
+{
+  "productive": ["chat.openai.com", "github.com", "leetcode.com"],
+  "unproductive": ["instagram.com", "facebook.com", "youtube.com"]
+}
