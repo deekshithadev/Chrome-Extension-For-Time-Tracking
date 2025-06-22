@@ -1,0 +1,14 @@
+# Node.js
+node_modules/
+.env
+data.json
+
+# System
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Editor
+.vscode/
